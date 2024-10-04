@@ -1,0 +1,58 @@
+version: "3"
+services:
+  redis:
+    image: redis:7-alpine
+    command: redis-server
+    expose:
+         - 6379
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /usr/backend
+    
+
+    volumes:
+            - ./backend:/usr/backend
+    expose:
+      - 8009
+    ports:
+      - "8009:8009"
+
+  worker:
+      restart: always
+      build:
+            context: ./backend
+            dockerfile : Dockerfile
+      command: celery -A backend worker -l info -P gevent
+      working_dir: /usr/backend
+      volumes:
+          - ./backend:/usr/backend
+
+  socket:
+    build:
+      context: ./stream
+      dockerfile: Dockerfile
+    working_dir: /usr/socket
+    expose:
+      - 4076
+    ports:
+      - '4076:4076'
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    working_dir: /usr/frontend
+
+    expose:
+      - 3060
+    ports:
+      - "3060:3060" 
+
+
+  
+volumes:
+  # static-ui-content:
+  static-ui-content:

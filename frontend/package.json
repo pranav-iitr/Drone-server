@@ -1,0 +1,48 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "devs": "next dev --experimental-https",
+    "build": "next build",
+    "start": "next start -p 3060",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.14",
+    "@next/font": "^14.0.4",
+    "axios": "^1.6.5",
+    "clipboard-copy": "^4.0.1",
+    "cookies-next": "^4.1.0",
+    "lodash": "^4.17.21",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hls-player": "^3.0.7",
+    "react-hot-toast": "^2.4.1",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "@rvxlab/tailwind-plugin-ios-full-height": "^1.1.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "postcss": "^8",
+    "prettier": "^3.1.1",
+    "tailwindcss": "^3.3.0"
+  },
+  "lint-staged": {
+    "*.{js, jsx, ts, tsx}": "eslint --cache --fix",
+    "*.{js, css, md}": "prettier --write"
+  }
+}
